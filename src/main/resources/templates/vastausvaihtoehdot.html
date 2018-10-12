@@ -1,0 +1,26 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Vastaukset</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h3 th:text="${kysymys.kysymysteksti}"> teksti</h3>
+        <br/>
+        <p th:text="${kysymys.kurssiotsikko}"></p>
+        <p th:text="${kysymys.kurssiAihe}"></p>
+        <ul>
+            <li th:each="vastaus : ${vastaukset}"> 
+                <span th:text="${vastaus.getVastausteksti}"></span>
+        </ul>
+        <h2>Luo uusi vastausvaihtoehto</h2>
+        <form th:action="@{~/lisaakysymys/{kysymysid}(kysymysid=${kysymys.getId})}" method="POST">
+            Vastausteksti <input type="text" name="vastausteksti"><br>
+                    oikein <input type="checkbox" name="onOikein" value="oikein"><br>
+                    <input type="submit" value="Luo" >
+                    
+        </form>
+        
+    </body>
+</html>
