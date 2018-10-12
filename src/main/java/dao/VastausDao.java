@@ -48,13 +48,14 @@ public class VastausDao implements Dao<Vastaus, Integer> {
     @Override
     public Vastaus saveOrUpdate(Vastaus object) throws SQLException {
         
-        Integer onOikein;
+        /*Integer onOikein;
         System.out.println(object.getKysymysId());
         if(object.onOikein()){
             onOikein = 1;
         } else {
             onOikein = 0;
         }
+        */
         Vastaus vastaus = etsiVastaus(object.getVastausteksti());
         if (vastaus != null) {
             return vastaus;
