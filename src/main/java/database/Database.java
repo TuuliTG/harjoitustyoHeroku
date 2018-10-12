@@ -7,10 +7,9 @@ import java.sql.SQLException;
 
 public class Database {
     
-    private String databaseAddress;
-
-    public Database(String databaseAddress) throws ClassNotFoundException {
-        this.databaseAddress = databaseAddress;
+    
+    public Database() throws ClassNotFoundException {
+        
     }
     
     public Connection getConnection() throws SQLException {
@@ -20,6 +19,6 @@ public class Database {
         return DriverManager.getConnection(dbUrl);
     }
 
-    return DriverManager.getConnection("jdbc:sqlite:JOTAIN JOTAIN");
+    return DriverManager.getConnection("jdbc:sqlite:" + dbUrl);
     }
 }
