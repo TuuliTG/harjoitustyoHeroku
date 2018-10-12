@@ -2,12 +2,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 
-    <head>
-        <title>ETUSIVU</title>
+     <head>
+        <title>Kysymykset ja vastaukset</title>
         <meta charset="UTF-8"/>
-        
     </head>
     <body>
-        <h1 th:text="${teksti}"
+        <h1>Kysymykset</h1>
+        <ul>
+            <li style="list-style: none;" th:each="kysymys : ${kokeiluKurssi}">
+                <span th:text="${kysymys.kurssiotsikko}"></span>
+                <br/>
+                <span th:text="${kysymys.kurssiAihe}"></span>
+                <ul>
+                    <a th:href="@{~/kysymys/{id}(id=${kysymys.getId})}">
+                        <li th:text="${kysymys.getKysymysteksti}">
+                            
+                        </li>
+                    </a>
+                    <form th:action="@{~/poistakysymys/{id}(id=${kysymys.getId})}" method="POST">
+                        <input type="submit" name="poista" value="Poista" >
+                    </form>
+                </ul>
+            </li>
+        </ul>
+        
+        <h3>Luo uusi kysymys </h3>
+        <form action="/kysymykset" method="POST">
+            Kurssi: <input type="text" name="kurssin nimi"><br>
+            Aihe: <input type="text" name="aihe"><br>
+            Kysymysteksti: <input type="text" name="teksti"><br>
+            <input type="submit" value="Luo">
+        </form>
     </body>
+</html>
 </html>
