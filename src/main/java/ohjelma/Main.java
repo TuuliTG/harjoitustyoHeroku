@@ -61,6 +61,7 @@ public class Main {
         
         Spark.post("/poistakysymys/:id", (req, res) -> {
             Integer kysymysId = Integer.parseInt(req.params(":id"));
+            kysymykset.delete(kysymysId);
             res.redirect("/kysymykset");
             return "";
         });
