@@ -13,7 +13,7 @@
         <ul>
             <li th:each="vastaus : ${vastaukset}"> 
                 <span th:text="${vastaus.getVastausteksti}"></span>
-                <span th:text="${vastaus.onOikein}" style="font-weight: bold"></span>
+                <span th:text="${vastaus.oikeinVaiVaarin}" style="font-weight: bold"></span>
                 <form th:action="@{~/poistavastaus/{id}(id=${vastaus.getId})}" method="POST">
                     <input type="submit" value="Poista" name="poistaVastaus" />
                 </form>

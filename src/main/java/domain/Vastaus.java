@@ -39,6 +39,14 @@ public class Vastaus {
         return onOikein;
     }
     
+    public String oikeinVaiVaarin() {
+        if (this.onOikein) {
+            return "Oikein";
+        } else {
+            return "Väärin";
+        }
+    }
+    
     
     
     
