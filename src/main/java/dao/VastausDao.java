@@ -64,7 +64,7 @@ public class VastausDao implements Dao<Vastaus, Integer> {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO Vastaus (kysymys_id, vastausteksti, onOikein) VALUES (?,?,?)");
             stmt.setInt(1, object.getKysymysId());
             stmt.setString(2, object.getVastausteksti());
-            stmt.setInt(3, onOikein);
+            stmt.setBoolean(3, object.onOikein());
             stmt.executeUpdate();
         }
         return etsiVastaus(object.getVastausteksti());
@@ -95,11 +95,11 @@ public class VastausDao implements Dao<Vastaus, Integer> {
             ResultSet rs = stmt.executeQuery();
            
             while(rs.next()){
-                boolean onOikein = false;
+                /*boolean onOikein = false;
                 if(rs.getInt("onOikein")==1) {
                     onOikein = true;
-                }
-                vastaukset.add(new Vastaus(rs.getInt("id"), rs.getInt("kysymys_id"), rs.getString("vastausteksti"), onOikein));
+                }*/
+                vastaukset.add(new Vastaus(rs.getInt("id"), rs.getInt("kysymys_id"), rs.getString("vastausteksti"), rs.getBoolean("onOikein")));
             }
         }
         return vastaukset;
