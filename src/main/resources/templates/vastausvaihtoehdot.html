@@ -8,11 +8,15 @@
     <body>
         <h3 th:text="${kysymys.kysymysteksti}"> teksti</h3>
         <br/>
-        <p th:text="${kysymys.kurssiotsikko}"></p>
-        <p th:text="${kysymys.kurssiAihe}"></p>
+        <p> Kurssi: <span th:text="${kysymys.getAihe}"></span></p>
+        <p> Aihepiiri: <span th:text="${kysymys.getAihe}"></span></p>
         <ul>
             <li th:each="vastaus : ${vastaukset}"> 
                 <span th:text="${vastaus.getVastausteksti}"></span>
+                <span th:text="${vastaus.onOikein}" style="font-weight: bold"></span>
+                <form th:action="@{~/poistavastaus/{id}(id=${vastaus.getId})}" method="POST">
+                    <input type="submit" value="Poista" name="poistaVastaus" />
+                </form>
         </ul>
         <h2>Luo uusi vastausvaihtoehto</h2>
         <form th:action="@{~/lisaakysymys/{kysymysid}(kysymysid=${kysymys.getId})}" method="POST">
@@ -21,6 +25,12 @@
                     <input type="submit" value="Luo" >
                     
         </form>
+        
+        <p>
+            <a th:href="@{~/kysymykset}">
+                <li>Kysymysten listaukseen</li>
+            </a>
+        </p>
         
     </body>
 </html>

@@ -17,7 +17,6 @@ public class VastausDao implements Dao<Vastaus, Integer> {
     public VastausDao(Database database) {
         this.database = database;
     }
-    
 
     @Override
     public Vastaus findOne(Integer key) throws SQLException {
@@ -48,14 +47,7 @@ public class VastausDao implements Dao<Vastaus, Integer> {
     @Override
     public Vastaus saveOrUpdate(Vastaus object) throws SQLException {
         
-        /*Integer onOikein;
-        System.out.println(object.getKysymysId());
-        if(object.onOikein()){
-            onOikein = 1;
-        } else {
-            onOikein = 0;
-        }
-        */
+        
         Vastaus vastaus = etsiVastaus(object.getVastausteksti());
         if (vastaus != null) {
             return vastaus;
@@ -95,10 +87,7 @@ public class VastausDao implements Dao<Vastaus, Integer> {
             ResultSet rs = stmt.executeQuery();
            
             while(rs.next()){
-                /*boolean onOikein = false;
-                if(rs.getInt("onOikein")==1) {
-                    onOikein = true;
-                }*/
+                
                 vastaukset.add(new Vastaus(rs.getInt("id"), rs.getInt("kysymys_id"), rs.getString("vastausteksti"), rs.getBoolean("onOikein")));
             }
         }
