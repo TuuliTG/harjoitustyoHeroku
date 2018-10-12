@@ -8,23 +8,18 @@
     </head>
     <body>
         <h1>Kysymykset</h1>
-        <ul>
-            <li style="list-style: none;" th:each="kysymys : ${kokeiluKurssi}">
-                <span th:text="${kysymys.kurssiotsikko}"></span>
-                <br/>
-                <span th:text="${kysymys.kurssiAihe}"></span>
-                <ul>
-                    <a th:href="@{~/kysymys/{id}(id=${kysymys.getId})}">
-                        <li th:text="${kysymys.getKysymysteksti}">
-                            
-                        </li>
-                    </a>
-                    <form th:action="@{~/poistakysymys/{id}(id=${kysymys.getId})}" method="POST">
+       
+        <div th:each="kysymys : ${kokeiluKurssi}" th:object="${kysymys}">
+            <p style="font-size: large"> <b>Kurssi: <span th:text="*{getKurssi}"></span></b></p>
+            <p style="font-size: large"> <b> Aihe: <span th:text="*{getAihe}"></span></b></p>
+            
+            <ul>
+                <a th:href="@{~/kysymys/{id}(id=*{getId})}">
+                    <li th:text="*{getKysymysteksti}"></li></a></ul>
+            <form th:action="@{~/poistakysymys/{id}(id=${kysymys.getId})}" method="POST">
                         <input type="submit" name="poista" value="Poista" >
                     </form>
-                </ul>
-            </li>
-        </ul>
+        </div>
         
         <h3>Luo uusi kysymys </h3>
         <form action="/kysymykset" method="POST">

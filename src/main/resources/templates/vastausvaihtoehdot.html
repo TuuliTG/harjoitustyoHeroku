@@ -6,10 +6,10 @@
         <meta charset="UTF-8"/>
     </head>
     <body>
-        <h3 th:text="${kysymys.kysymysteksti}"> teksti</h3>
+        <h2 th:text="${kysymys.kysymysteksti}"> teksti</h2>
         <br/>
-        <p> Kurssi: <span th:text="${kysymys.getAihe}"></span></p>
-        <p> Aihepiiri: <span th:text="${kysymys.getAihe}"></span></p>
+        <p style="font-size: large"><b> Kurssi: <span th:text="${kysymys.getAihe}"></span></b></p>
+        <p style="font-size: large"><b> Aihepiiri: <span th:text="${kysymys.getAihe}"></span></b></p>
         <ul>
             <li th:each="vastaus : ${vastaukset}"> 
                 <span th:text="${vastaus.getVastausteksti}"></span>
