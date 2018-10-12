@@ -81,6 +81,13 @@ public class Main {
             res.redirect("/kysymykset");
             return "";
         });
+        
+        Spark.post("/poistavastaus/:id", (req, res) -> {
+            Integer vastausId = Integer.parseInt(req.params(":id"));
+            vastaukset.delete(vastausId);
+            res.redirect("/kysymykset");
+            return "";
+        });
     }
     
 }
