@@ -20,7 +20,7 @@
         </ul>
         <h2>Luo uusi vastausvaihtoehto</h2>
         <form th:action="@{~/lisaakysymys/{kysymysid}(kysymysid=${kysymys.getId})}" method="POST">
-            Vastausteksti <input type="text" name="vastausteksti"><br>
+            Vastausteksti <input type="text" name="vastausteksti" required><br>
                     oikein <input type="checkbox" name="onOikein" value="oikein"><br>
                     <input type="submit" value="Luo" >
                     
