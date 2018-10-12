@@ -8,7 +8,7 @@
     <body>
         <h2 th:text="${kysymys.kysymysteksti}"> teksti</h2>
         <br/>
-        <p style="font-size: large"><b> Kurssi: <span th:text="${kysymys.getAihe}"></span></b></p>
+        <p style="font-size: large"><b> Kurssi: <span th:text="${kysymys.getKurssi}"></span></b></p>
         <p style="font-size: large"><b> Aihepiiri: <span th:text="${kysymys.getAihe}"></span></b></p>
         <ul>
             <li th:each="vastaus : ${vastaukset}"> 
@@ -19,7 +19,7 @@
                 </form>
         </ul>
         <h2>Luo uusi vastausvaihtoehto</h2>
-        <h3>Huom! Vähintään yksi vastausvaihtoehdoista pitää olla oikein!</h3>
+        <h3>Huom: Vähintään yksi vastausvaihtoehdoista pitää olla oikein!</h3>
         <form th:action="@{~/lisaakysymys/{kysymysid}(kysymysid=${kysymys.getId})}" method="POST">
             Vastausteksti <input type="text" name="vastausteksti" required><br>
                     oikein <input type="checkbox" name="onOikein" value="oikein"><br>
