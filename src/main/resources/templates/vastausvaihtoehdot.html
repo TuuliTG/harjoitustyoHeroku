@@ -19,6 +19,7 @@
                 </form>
         </ul>
         <h2>Luo uusi vastausvaihtoehto</h2>
+        <h3>Huom! Vähintään yksi vastausvaihtoehdoista pitää olla oikein!</h3>
         <form th:action="@{~/lisaakysymys/{kysymysid}(kysymysid=${kysymys.getId})}" method="POST">
             Vastausteksti <input type="text" name="vastausteksti" required><br>
                     oikein <input type="checkbox" name="onOikein" value="oikein"><br>
